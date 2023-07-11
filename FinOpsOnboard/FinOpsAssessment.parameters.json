@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mspOfferName": {
+            "value": "Systex FinOps Assessment"
+        },
+        "mspOfferDescription": {
+            "value": "FinOps Assessment Service Provided by Systex Information"
+        },
+        "managedByTenantId": {
+            "value": "e72f6de0-ea11-4959-a70e-136aacd3cf4f"
+        },
+        "authorizations": {
+            "value": [
+                { 
+                    "principalId": "862b7b91-7f7c-47f4-a6d9-ee35a23fb347", 
+                    "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+                    "principalIdDisplayName": "Systex FinOps Assessment" 
+                }
+                    ]
+                }                
+        }
+}
