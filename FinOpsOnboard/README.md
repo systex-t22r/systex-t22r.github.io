@@ -21,16 +21,10 @@
 
 此二文件都不需任何修改，在後續流程直接引用即可。
 
-
 > 須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見[Deploy the Azure Resource Manager template](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template)。
 
 ## 使用Powershell加入
-
-<aside>
-💡 須先登入Azure帳戶才進行以下流程。
-
-</aside>
-
+> 須先登入Azure帳戶才進行以下流程。
 1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
 2. 在該資料夾底下開啟Powershell。
 3. 輸入以下指令：
@@ -55,12 +49,7 @@
     
 
 ## 使用****Azure CLI****加入
-
-<aside>
-💡 須先登入Azure帳戶才進行以下流程。
-
-</aside>
-
+> 須先登入Azure帳戶才進行以下流程。
 1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
 2. 在該資料夾位置開啟命令行介面。
 3. 輸入以下指令：
