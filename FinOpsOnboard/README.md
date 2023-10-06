@@ -31,15 +31,12 @@
 須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見[Deploy the Azure Resource Manager template](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template)。
 
 ## 使用Powershell加入
-
-> 須先使用Connect-AzAccount登入Azure帳戶才進行以下流程。
-
 1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
 2. 在該資料夾底下開啟Powershell。
-3. 輸入以下指令（須置換<deploymentName>與<AzureRegion>）：
+3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
+   > 須先使用Connect-AzAccount登入Azure帳戶才進行以下流程。
    ```powershell
-   New-AzSubscriptionDeployment -Name <deploymentName> `
-                    -Location <AzureRegion> `
+   New-AzSubscriptionDeployment -Location <AzureRegion> `
                     -TemplateFile FinOpsAssessment.json `
                     -TemplateParameterFile FinOpsAssessment.parameters.json `
                     -Verbose
@@ -51,15 +48,13 @@
    ```
 
 ## 使用****Azure CLI****加入
-
-> 須先登入Azure帳戶才進行以下流程。
-
 1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
 2. 在該資料夾位置開啟命令行介面。
-3. 輸入以下指令（由於是以反斜槓換行故不可使用Powershell輸入）：
+3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
+   > 1. 須先登入Azure帳戶（az login）才能進行以下流程。
+   > 2. 由於是以反斜槓換行故不可使用Powershell輸入）
    ```bash
-   az deployment sub create --name <deploymentName> \
-                            --location <AzureRegion> \
+   az deployment sub create --location <AzureRegion> \
                             --template-file FinOpsAssessment.json \
                             --parameters FinOpsAssessment.parameters.json \
                             --verbose
@@ -89,3 +84,6 @@
 
 ## 參考資料
 [Onboard a customer to Azure Lighthouse](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer)
+
+## 備註
+1. 無論是使用Powershell或Azure CLI加入，都可以不填<deploymentName>，系統會自動產生。
