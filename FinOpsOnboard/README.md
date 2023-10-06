@@ -67,8 +67,8 @@
 
 ## 透過Azure入口網站加入
 1. 選取Azure Lighthouse功能
-   ![](img/lighthouse-onboard-by-portal/1.png)  
-2. 開啟上傳介面
+   ![](img/lighthouse-onboard-by-portal/1.png)
+2. 開啟上傳介面  
    ![](img/lighthouse-onboard-by-portal/2.png)
 3. 上傳範本檔案（確保如附圖配置後按上傳）
    ![](img/lighthouse-onboard-by-portal/3.png)
