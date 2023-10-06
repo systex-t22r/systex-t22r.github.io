@@ -1,4 +1,5 @@
 # 以AAD加入Systex FinOps & SRE的服務
+## 簡介
 
 為了提供Azure用戶最佳的FinOps & SRE服務，需要用戶以AAD（Azure Active Directory）加入我們的Azure Lighthoure，以利進行數據分析。
 
@@ -6,7 +7,7 @@
 
 1. 使用Powershell加入。
 2. 使用Azure CLI加入。
-3. 透過Azure 入口網站加入。
+3. 透過Azure入口網站加入。
 
 以上擇一進行即可。
 
@@ -34,7 +35,7 @@
 1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
 2. 在該資料夾底下開啟Powershell。
 3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
-   > 須先使用Connect-AzAccount登入Azure帳戶才進行以下流程。
+   > 須先使用Connect-AzAccount登入Azure帳戶才能進行以下流程。
    ```powershell
    New-AzSubscriptionDeployment -Location <AzureRegion> `
                     -TemplateFile FinOpsAssessment.json `
@@ -52,7 +53,7 @@
 2. 在該資料夾位置開啟命令行介面。
 3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
    > 1. 須先登入Azure帳戶（az login）才能進行以下流程。
-   > 2. 由於是以反斜槓換行故不可使用Powershell輸入）
+   > 2. 由於是以反斜槓換行故不可使用Powershell輸入
    ```bash
    az deployment sub create --location <AzureRegion> \
                             --template-file FinOpsAssessment.json \
