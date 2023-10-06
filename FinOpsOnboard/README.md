@@ -87,3 +87,4 @@
 
 ## 備註
 1. 無論是使用Powershell或Azure CLI加入，都可以不填<deploymentName>，系統會自動產生。
+2. Powershell登入Azure所使用的Connect-AzAccount是新模組Az module的功能，相關安裝請參考[Introducing the Azure Az PowerShell module](https://learn.microsoft.com/en-us/powershell/azure/new-azureps-module-az?view=azps-10.3.0)。
