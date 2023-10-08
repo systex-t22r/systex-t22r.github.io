@@ -1,9 +1,326 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>Deploy template to Azure</h1>
-    </body>
-</html>
+
+      <html>
+        <head>
+          <title>精誠FinOps & SRE服務</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta charset="UTF-8">
+        </head>
+        <body>
+          <div id='content'>
+      <h1 id="精誠finops--sre服務">精誠FinOps &amp; SRE服務</h1>
+<h2 id="簡介">簡介</h2>
+<p>欲使用精誠FinOps &amp; SRE服務，Azure用戶須以AAD（Azure Active Directory）授權精誠FinOps &amp; SRE服務的Azure Lighthoure，方可進行後續的數據分析。</p>
+<h2 id="授權方式">授權方式</h2>
+<ol>
+<li>使用Powershell授權。</li>
+<li>使用Azure CLI授權。</li>
+<li>透過Azure入口網站授權。</li>
+</ol>
+<p>以上擇一進行即可。</p>
+<h2 id="前置準備">前置準備</h2>
+<h3 id="準備檔案">準備檔案</h3>
+<p>這三種方式都需要此目錄下的</p>
+<ol>
+<li><a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json">FinOpsAssessment.json</a></li>
+<li><a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a></li>
+</ol>
+<p>關於此二文件：</p>
+<ol>
+<li>都不需任何修改，在後續流程直接引用即可。</li>
+<li>建議使用Download raw file的方式下載，如下圖，以確保檔名與內容正確。</li>
+</ol>
+<p><img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/dl-with-raw-file.png?raw=true" alt="" /></p>
+<h3 id="確保操作權限">確保操作權限</h3>
+<p>須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見<a href="https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template">Deploy the Azure Resource Manager template</a>。</p>
+<h2 id="使用powershell授權">使用Powershell授權</h2>
+<ol>
+<li>建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。</li>
+<li>在該資料夾底下開啟Powershell。</li>
+<li>輸入以下指令（須置換<a href="https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion"><code>&lt;AzureRegion&gt;</code></a>）：</li>
+</ol>
+<blockquote>
+  <p>須先使用Connect-AzAccount登入Azure帳戶才能進行以下流程。</p>
+</blockquote>
+<pre><code class="hljs powershell language-powershell">   <span class="hljs-built_in">New-AzSubscriptionDeployment</span> <span class="hljs-literal">-Location</span> &lt;AzureRegion&gt; `
+                    <span class="hljs-literal">-TemplateFile</span> FinOpsAssessment.json `
+                    <span class="hljs-literal">-TemplateParameterFile</span> FinOpsAssessment.parameters.json `
+                    <span class="hljs-literal">-Verbose</span>
+</code></pre>
+<ol start="4">
+<li>確認是否授權成功：</li>
+</ol>
+<pre><code class="hljs powershell language-powershell">   <span class="hljs-built_in">Get-AzManagedServicesDefinition</span>
+   <span class="hljs-built_in">Get-AzManagedServicesAssignment</span>
+</code></pre>
+<h2 id="使用azure-cli授權">使用<strong><em><em>Azure CLI</em></strong></em>授權</h2>
+<ol>
+<li>建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。</li>
+<li>在該資料夾位置開啟命令行介面。</li>
+<li>輸入以下指令（須置換<a href="https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion"><code>&lt;AzureRegion&gt;</code></a>）：</li>
+</ol>
+<blockquote>
+  <ol>
+  <li>須先登入Azure帳戶（az login）才能進行以下流程。</li>
+  <li>由於是以反斜槓換行故不可使用Powershell輸入</li>
+  </ol>
+</blockquote>
+<pre><code class="hljs bash language-bash">   az deployment sub create --location &lt;AzureRegion&gt; \
+                            --template-file FinOpsAssessment.json \
+                            --parameters FinOpsAssessment.parameters.json \
+                            --verbose
+</code></pre>
+<ol start="4">
+<li>確認是否授權成功：</li>
+</ol>
+<pre><code class="hljs bash language-bash">   az managedservices definition list
+   az managedservices assignment list
+</code></pre>
+<h2 id="透過azure入口網站授權">透過Azure入口網站授權</h2>
+<ol>
+<li>選取Azure Lighthouse功能<br />
+<img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true" alt="" /></li>
+<li>開啟上傳介面  <br />
+<img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true" alt="" /></li>
+<li>上傳範本檔案（確保如附圖配置後按上傳）<br />
+<img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/3.png?raw=true" alt="" /></li>
+<li>選擇訂閱帳戶與區域後按「檢閱 + 建立」鈕<br />
+<img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/4.png?raw=true" alt="" /></li>
+<li>確認內容後按「建立」鈕<br />
+<img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/5.png?raw=true" alt="" /></li>
+<li>等待部屬完成如下圖<br />
+<img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/6.png?raw=true" alt="" /></li>
+<li>至Azure Lighthouse，即可看到（可能需要按重新整理）已成功註冊Systex FinOps &amp; SRE Service之服務🎉<br />
+<img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/7.png?raw=true" alt="" /></li>
+</ol>
+<h2 id="參考資料">參考資料</h2>
+<p><a href="https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer">Onboard a customer to Azure Lighthouse</a></p>
+<h2 id="備註">備註</h2>
+<ol>
+<li>無論是使用Powershell或Azure CLI授權，都可以不填<code>&lt;deploymentName&gt;</code>，系統會自動產生。</li>
+<li>Powershell登入Azure所使用的Connect-AzAccount是新模組Az module的功能，相關安裝請參考<a href="https://learn.microsoft.com/en-us/powershell/azure/new-azureps-module-az?view=azps-10.3.0">Introducing the Azure Az PowerShell module</a>。</li>
+</ol>
+
+          </div>
+          <style type='text/css'>body {
+    font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #111;
+    background-color: #fbfbfb;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "kern" 1;
+    -moz-font-feature-settings: "kern" 1;
+    -o-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        padding: 5px;
+    }
+    body>#content {
+        padding: 0px 20px 20px 20px !important;
+    }
+}
+
+body>#content {
+    margin: 0px;
+    max-width: 900px;
+    border: 1px solid #e1e4e8;
+    padding: 10px 40px;
+    padding-bottom: 20px;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+summary {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+hr {
+    color: #bbb;
+    background-color: #bbb;
+    height: 1px;
+    flex: 0 1 auto;
+    margin: 1em 0;
+    padding: 0;
+    border: none;
+}
+
+.hljs-operator {
+    color: #868686;
+    /* There is a bug where the syntax highlighter would pick no color for e.g. `&&` symbols in the code samples. Let's overwrite this */
+}
+
+
+/**
+ * Links
+ */
+
+a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #0366d6;
+}
+
+a:hover {
+    color: #0366d6;
+    text-decoration: underline;
+}
+
+pre {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+}
+
+
+/**
+  * Code blocks
+  */
+
+code {
+    background-color: rgba(27, 31, 35, .05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    word-wrap: break-word;
+    padding: .2em .4em;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+}
+
+pre>code {
+    background-color: transparent;
+    border: 0;
+    display: inline;
+    line-height: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: 0;
+    word-wrap: normal;
+    font-size: 100%;
+}
+
+
+/**
+ * Blockquotes
+ */
+
+blockquote {
+    margin-left: 30px;
+    margin-top: 0px;
+    margin-bottom: 16px;
+    border-left-width: 3px;
+    padding: 0 1em;
+    color: #828282;
+    border-left: 4px solid #e8e8e8;
+    padding-left: 15px;
+    font-size: 18px;
+    letter-spacing: -1px;
+    font-style: italic;
+}
+
+blockquote * {
+    font-style: normal !important;
+    letter-spacing: 0;
+    color: #6a737d !important;
+}
+
+
+/**
+ * Tables
+ */
+
+table {
+    border-spacing: 2px;
+    display: block;
+    font-size: 14px;
+    overflow: auto;
+    width: 100%;
+    margin-bottom: 16px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+th {
+    font-weight: 600;
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
+
+
+/**
+ * Others
+ */
+
+img {
+    max-width: 100%;
+}
+
+p {
+    line-height: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #24292e;
+}
+
+ul {
+    margin-top: 0;
+}
+
+li {
+    color: #24292e;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+li+li {
+    margin-top: 0.25em;
+}
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #24292e;
+}
+
+a:visited {
+    color: #0366d6;
+}
+
+h1,
+h2,
+h3 {
+    border-bottom: 1px solid #eaecef;
+    color: #111;
+    /* Darker */
+}
+
+code>* {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+}</style>
+          <style type='text/css'>pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{color:#abb2bf;background:#282c34}.hljs-comment,.hljs-quote{color:#5c6370;font-style:italic}.hljs-doctag,.hljs-formula,.hljs-keyword{color:#c678dd}.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#e06c75}.hljs-literal{color:#56b6c2}.hljs-addition,.hljs-attribute,.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#98c379}.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#d19a66}.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#61aeee}.hljs-built_in,.hljs-class .hljs-title,.hljs-title.class_{color:#e6c07b}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.hljs-link{text-decoration:underline}</style>
+        </body>
+      </html>
