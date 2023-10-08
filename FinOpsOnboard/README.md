@@ -48,7 +48,7 @@
    Get-AzManagedServicesAssignment
    ```
 
-## 使用****Azure CLI****授權
+## 使用Azure CLI授權
 1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
 2. 在該資料夾位置開啟命令行介面。
 3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
