@@ -25,7 +25,7 @@
 1. 都不需任何修改，在後續流程直接引用即可。
 2. 建議使用Download raw file的方式下載，如下圖，以確保檔名與內容正確。
 
-![](img/dl-with-raw-file.png)
+![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/dl-with-raw-file.png?raw=true)
 
 ### 確保操作權限
 
@@ -68,19 +68,19 @@
 
 ## 透過Azure入口網站授權
 1. 選取Azure Lighthouse功能
-   ![](img/lighthouse-onboard-by-portal/1.png)
+   ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true)
 2. 開啟上傳介面  
-   ![](img/lighthouse-onboard-by-portal/2.png)
+   ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true)
 3. 上傳範本檔案（確保如附圖配置後按上傳）
-   ![](img/lighthouse-onboard-by-portal/3.png)
+   ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/3.png?raw=true)
 4. 選擇訂閱帳戶與區域後按「檢閱 + 建立」鈕
-   ![](img/lighthouse-onboard-by-portal/4.png)
+   ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/4.png?raw=true)
 5. 確認內容後按「建立」鈕
-   ![](img/lighthouse-onboard-by-portal/5.png)
+   ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/5.png?raw=true)
 6. 等待部屬完成如下圖
-   ![](img/lighthouse-onboard-by-portal/6.png)
+   ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/6.png?raw=true)
 7. 至Azure Lighthouse，即可看到（可能需要按重新整理）已成功註冊Systex FinOps & SRE Service之服務🎉
-   ![](img/lighthouse-onboard-by-portal/7.png)
+   ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/7.png?raw=true)
 
 
 ## 參考資料
