@@ -32,7 +32,7 @@
 須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見[Deploy the Azure Resource Manager template](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template)。
 
 ## 使用Powershell授權
-1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
+1. 建立一個資料夾，並下載[FinOpsAssessment.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json)與[FinOpsAssessment.parameters.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json)至其中。
 2. 在該資料夾底下開啟Powershell。
 3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
    > 須先使用Connect-AzAccount登入Azure帳戶才能進行以下流程。
@@ -49,7 +49,7 @@
    ```
 
 ## 使用Azure CLI授權
-1. 建立一個資料夾，並下載FinOpsAssessment.json與FinOpsAssessment.parameters.json至其中。
+1. 建立一個資料夾，並下載[FinOpsAssessment.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json)與[FinOpsAssessment.parameters.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json)至其中。
 2. 在該資料夾位置開啟命令行介面。
 3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
    > 1. 須先登入Azure帳戶（az login）才能進行以下流程。
@@ -71,7 +71,7 @@
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true)
 2. 開啟上傳介面  
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true)
-3. 上傳範本檔案（確保如附圖配置後按上傳）
+3. 上傳範本檔案[FinOpsAssessment.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json)與[FinOpsAssessment.parameters.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json)（確保如附圖配置後按上傳）
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/3.png?raw=true)
 4. 選擇訂閱帳戶與區域後按「檢閱 + 建立」鈕
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/4.png?raw=true)
