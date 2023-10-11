@@ -48,8 +48,7 @@
   <li>由於是以反斜槓換行故不可使用Powershell輸入</li>
   </ol>
 </blockquote>
-<pre><code class="hljs bash language-bash">   <span class="hljs-comment"># parameters只能使用local file。</span>
-   az deployment sub create --location WestUS \
+<pre><code class="hljs bash language-bash">   az deployment sub create --location WestUS \
                             --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
                             --parameters https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json \
                             --verbose
@@ -62,7 +61,7 @@
 </code></pre>
 <h2 id="透過azure入口網站授權">透過Azure入口網站授權</h2>
 <ol>
-<li>選取Azure Lighthouse功能<br />
+<li>選取Azure Lighthouse的服務提供者功能<br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true" alt="" /></li>
 <li>開啟上傳介面  <br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true" alt="" /></li>
