@@ -18,10 +18,10 @@
 須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見[Deploy the Azure Resource Manager template](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template)。
 
 ## 使用Powershell授權
-1. 開啟Powershell輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
+1. 開啟Powershell輸入以下指令：
    > 須先使用Connect-AzAccount登入Azure帳戶才能進行以下流程。
    ```powershell
-   New-AzSubscriptionDeployment -Location <AzureRegion> `
+   New-AzSubscriptionDeployment -Location WestUS `
                     -TemplateUri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json `
                     -TemplateParameterUri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json `
                     -Verbose
@@ -33,19 +33,17 @@
    ```
 
 ## 使用Azure CLI授權
-1. 建立一個資料夾，並下載[FinOpsAssessment.parameters.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json)至其中。
-2. 在該資料夾位置開啟命令行介面。
-3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
+1. 開啟命令行介面輸入以下指令：
    > 1. 須先登入Azure帳戶（az login）才能進行以下流程。
    > 2. 由於是以反斜槓換行故不可使用Powershell輸入
    ```bash
    # parameters只能使用local file。
-   az deployment sub create --location <AzureRegion> \
+   az deployment sub create --location WestUS \
                             --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
-                            --parameters FinOpsAssessment.parameters.json \
+                            --parameters https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json \
                             --verbose
    ```
-4. 確認是否授權成功：
+2. 確認是否授權成功：
    ```bash
    az managedservices definition list
    az managedservices assignment list
