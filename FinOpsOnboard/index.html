@@ -21,32 +21,25 @@
 <h3 id="準備檔案">準備檔案</h3>
 <p>這三種方式都需要此目錄下的</p>
 <ol>
-<li><a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json">FinOpsAssessment.json</a></li>
-<li><a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a></li>
+<li><a href="https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json">FinOpsAssessment.json</a></li>
+<li><a href="https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a></li>
 </ol>
-<p>關於此二文件：</p>
-<ol>
-<li>都不需任何修改，在後續流程直接引用即可。</li>
-<li>建議使用Download raw file的方式下載，如下圖，以確保檔名與內容正確。</li>
-</ol>
-<p><img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/dl-with-raw-file.png?raw=true" alt="" /></p>
+<p>關於此二文件都不需任何修改，在後續流程直接引用即可。</p>
 <h3 id="確保操作權限">確保操作權限</h3>
 <p>須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見<a href="https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template">Deploy the Azure Resource Manager template</a>。</p>
 <h2 id="使用powershell授權">使用Powershell授權</h2>
 <ol>
-<li>建立一個資料夾，並下載<a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json">FinOpsAssessment.json</a>與<a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a>至其中。</li>
-<li>在該資料夾底下開啟Powershell。</li>
-<li>輸入以下指令（須置換<a href="https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion"><code>&lt;AzureRegion&gt;</code></a>）：</li>
+<li>開啟Powershell輸入以下指令（須置換<a href="https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion"><code>&lt;AzureRegion&gt;</code></a>）：</li>
 </ol>
 <blockquote>
   <p>須先使用Connect-AzAccount登入Azure帳戶才能進行以下流程。</p>
 </blockquote>
 <pre><code class="hljs powershell language-powershell">   <span class="hljs-built_in">New-AzSubscriptionDeployment</span> <span class="hljs-literal">-Location</span> &lt;AzureRegion&gt; `
-                    <span class="hljs-literal">-TemplateFile</span> FinOpsAssessment.json `
-                    <span class="hljs-literal">-TemplateParameterFile</span> FinOpsAssessment.parameters.json `
+                    <span class="hljs-literal">-TemplateUri</span> https://systex<span class="hljs-literal">-t22r</span>.github.io/FinOpsOnboard/FinOpsAssessment.json `
+                    <span class="hljs-literal">-TemplateParameterUri</span>  https://systex<span class="hljs-literal">-t22r</span>.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json `
                     <span class="hljs-literal">-Verbose</span>
 </code></pre>
-<ol start="4">
+<ol start="2">
 <li>確認是否授權成功：</li>
 </ol>
 <pre><code class="hljs powershell language-powershell">   <span class="hljs-built_in">Get-AzManagedServicesDefinition</span>
@@ -54,7 +47,7 @@
 </code></pre>
 <h2 id="使用azure-cli授權">使用Azure CLI授權</h2>
 <ol>
-<li>建立一個資料夾，並下載<a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json">FinOpsAssessment.json</a>與<a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a>至其中。</li>
+<li>建立一個資料夾，並下載<a href="https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a>至其中。</li>
 <li>在該資料夾位置開啟命令行介面。</li>
 <li>輸入以下指令（須置換<a href="https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion"><code>&lt;AzureRegion&gt;</code></a>）：</li>
 </ol>
@@ -64,8 +57,9 @@
   <li>由於是以反斜槓換行故不可使用Powershell輸入</li>
   </ol>
 </blockquote>
-<pre><code class="hljs bash language-bash">   az deployment sub create --location &lt;AzureRegion&gt; \
-                            --template-file FinOpsAssessment.json \
+<pre><code class="hljs bash language-bash">   <span class="hljs-comment"># parameters只能使用local file。</span>
+   az deployment sub create --location &lt;AzureRegion&gt; \
+                            --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
                             --parameters FinOpsAssessment.parameters.json \
                             --verbose
 </code></pre>
@@ -81,7 +75,7 @@
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true" alt="" /></li>
 <li>開啟上傳介面  <br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true" alt="" /></li>
-<li>上傳範本檔案<a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json">FinOpsAssessment.json</a>與<a href="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a>（確保如附圖配置後按上傳）<br />
+<li>上傳範本檔案<a href="https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json">FinOpsAssessment.json</a>與<a href="https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json">FinOpsAssessment.parameters.json</a>（確保如附圖配置後按上傳）<br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/3.png?raw=true" alt="" /></li>
 <li>選擇訂閱帳戶與區域後按「檢閱 + 建立」鈕<br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/4.png?raw=true" alt="" /></li>
