@@ -1,7 +1,7 @@
 # 精誠FinOps & SRE服務
 ## 簡介
 
-欲使用精誠FinOps & SRE服務，Azure用戶須以AAD（Azure Active Directory）授權精誠FinOps & SRE服務的Azure Lighthoure，方可進行後續的數據分析。
+欲使用精誠FinOps & SRE服務，Azure用戶須以 AAD（Azure Active Directory）透過 Azure Lighthouse 授權精誠 FinOps & SRE 服務帳號存取，方可進行後續的帳單與使用狀況分析。
 
 ## 授權方式
 
@@ -17,46 +17,40 @@
 
 這三種方式都需要此目錄下的
 
-1. [FinOpsAssessment.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json)
-2. [FinOpsAssessment.parameters.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json)
+1. [FinOpsAssessment.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json)
+2. [FinOpsAssessment.parameters.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json)
 
-關於此二文件：
-
-1. 都不需任何修改，在後續流程直接引用即可。
-2. 建議使用Download raw file的方式下載，如下圖，以確保檔名與內容正確。
-
-![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/dl-with-raw-file.png?raw=true)
+關於此二文件都不需任何修改，在後續流程直接引用即可。
 
 ### 確保操作權限
 
 須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見[Deploy the Azure Resource Manager template](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template)。
 
 ## 使用Powershell授權
-1. 建立一個資料夾，並下載[FinOpsAssessment.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json)與[FinOpsAssessment.parameters.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json)至其中。
-2. 在該資料夾底下開啟Powershell。
-3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
+1. 開啟Powershell輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
    > 須先使用Connect-AzAccount登入Azure帳戶才能進行以下流程。
    ```powershell
    New-AzSubscriptionDeployment -Location <AzureRegion> `
-                    -TemplateFile FinOpsAssessment.json `
-                    -TemplateParameterFile FinOpsAssessment.parameters.json `
+                    -TemplateUri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json `
+                    -TemplateParameterUri  https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json `
                     -Verbose
    ```
-4. 確認是否授權成功：
+2. 確認是否授權成功：
    ```powershell
    Get-AzManagedServicesDefinition
    Get-AzManagedServicesAssignment
    ```
 
 ## 使用Azure CLI授權
-1. 建立一個資料夾，並下載[FinOpsAssessment.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json)與[FinOpsAssessment.parameters.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json)至其中。
+1. 建立一個資料夾，並下載[FinOpsAssessment.parameters.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json)至其中。
 2. 在該資料夾位置開啟命令行介面。
 3. 輸入以下指令（須置換[`<AzureRegion>`](https://learn.microsoft.com/zh-tw/gaming/playfab/api-references/events/data-types/azureregion)）：
    > 1. 須先登入Azure帳戶（az login）才能進行以下流程。
    > 2. 由於是以反斜槓換行故不可使用Powershell輸入
    ```bash
+   # parameters只能使用local file。
    az deployment sub create --location <AzureRegion> \
-                            --template-file FinOpsAssessment.json \
+                            --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
                             --parameters FinOpsAssessment.parameters.json \
                             --verbose
    ```
@@ -71,7 +65,7 @@
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true)
 2. 開啟上傳介面  
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true)
-3. 上傳範本檔案[FinOpsAssessment.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.json)與[FinOpsAssessment.parameters.json](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/FinOpsAssessment.parameters.json)（確保如附圖配置後按上傳）
+3. 上傳範本檔案[FinOpsAssessment.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json)與[FinOpsAssessment.parameters.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json)（確保如附圖配置後按上傳）
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/3.png?raw=true)
 4. 選擇訂閱帳戶與區域後按「檢閱 + 建立」鈕
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/4.png?raw=true)
