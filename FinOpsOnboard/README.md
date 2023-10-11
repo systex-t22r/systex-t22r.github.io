@@ -37,7 +37,6 @@
    > 1. 須先登入Azure帳戶（az login）才能進行以下流程。
    > 2. 由於是以反斜槓換行故不可使用Powershell輸入
    ```bash
-   # parameters只能使用local file。
    az deployment sub create --location WestUS \
                             --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
                             --parameters https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json \
@@ -50,7 +49,7 @@
    ```
 
 ## 透過Azure入口網站授權
-1. 選取Azure Lighthouse功能
+1. 選取Azure Lighthouse的服務提供者功能
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true)
 2. 開啟上傳介面  
    ![](https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true)
