@@ -13,15 +13,6 @@
 
 ## 前置準備
 
-### 準備檔案
-
-這三種方式都需要此目錄下的
-
-1. [FinOpsAssessment.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json)
-2. [FinOpsAssessment.parameters.json](https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json)
-
-關於此二文件都不需任何修改，在後續流程直接引用即可。
-
 ### 確保操作權限
 
 須以non-guest account進行操作，且須具有Microsoft.Authorization/roleAssignments/write的權限，詳見[Deploy the Azure Resource Manager template](https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template)。
