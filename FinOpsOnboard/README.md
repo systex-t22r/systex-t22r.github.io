@@ -23,7 +23,7 @@
    ```powershell
    New-AzSubscriptionDeployment -Location <AzureRegion> `
                     -TemplateUri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json `
-                    -TemplateParameterUri  https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json `
+                    -TemplateParameterUri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json `
                     -Verbose
    ```
 2. 確認是否授權成功：
