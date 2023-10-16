@@ -20,7 +20,7 @@
 <h2 id="前置準備">前置準備</h2>
 <h3 id="確保操作權限">確保操作權限</h3>
 <p>須以 non-guest account 進行操作，且須具有 Microsoft.Authorization/roleAssignments/write 的權限，詳見 <a href="https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template">Deploy the Azure Resource Manager template</a>。</p>
-<h2 id="使用powershell授權">使用Powershell授權</h2>
+<h2 id="使用powershell授權">使用 Powershell 授權</h2>
 <ol>
 <li>開啟 Powershell 輸入以下指令：</li>
 </ol>
@@ -61,7 +61,7 @@
 </code></pre>
 <h2 id="透過azure入口網站授權">透過 Azure 入口網站授權</h2>
 <ol>
-<li>選取 Azure Portal 上的服務提供者功能<br />
+<li>使用 Azure Portal 搜尋服務提供者（Service providers）功能<br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/1.png?raw=true" alt="" /></li>
 <li>開啟上傳介面  <br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/2.png?raw=true" alt="" /></li>
@@ -73,7 +73,7 @@
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/5.png?raw=true" alt="" /></li>
 <li>等待部屬完成如下圖<br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/6.png?raw=true" alt="" /></li>
-<li>至Azure Lighthouse，即可看到（可能需要等待一段時間後按重新整理）已成功註冊 Systex FinOps &amp; SRE Service 之服務🎉<br />
+<li>回到服務提供者（Service providers）頁面，即可看到（可能需要等待一段時間後按重新整理）已成功註冊 Systex FinOps &amp; SRE Service 之服務🎉<br />
 <img src="https://github.com/systex-t22r/systex-t22r.github.io/blob/main/FinOpsOnboard/img/lighthouse-onboard-by-portal/7.png?raw=true" alt="" /></li>
 </ol>
 <h2 id="參考資料">參考資料</h2>
@@ -81,7 +81,7 @@
 <h2 id="備註">備註</h2>
 <ol>
 <li>無論是使用 Powershell 或 Azure CLI 授權，都可以不填 <code>&lt;deploymentName&gt;</code>，系統會自動產生。</li>
-<li>Powershell 登入 Azure 所使用的 Connect-AzAccount 是新模組 Az modul e的功能，相關安裝請參考<a href="https://learn.microsoft.com/en-us/powershell/azure/new-azureps-module-az?view=azps-10.3.0">Introducing the Azure Az PowerShell module</a>。</li>
+<li>Powershell 登入 Azure 所使用的 Connect-AzAccount 是新模組 Az module 的功能，相關安裝請參考 <a href="https://learn.microsoft.com/en-us/powershell/azure/new-azureps-module-az?view=azps-10.3.0">Introducing the Azure Az PowerShell module</a>。</li>
 </ol>
 
           </div>
