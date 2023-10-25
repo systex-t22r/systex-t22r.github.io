@@ -12,10 +12,18 @@
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+    <link
+        rel="stylesheet"
+        href="assets/jquery.toast.min.css"
+    >
     <script
-        src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"
+    ></script>
+    <script
+        type="text/javascript"
+        src="assets/jquery.toast.min.js"
     ></script>
     <style>
         .cloudShellImg:hover {
@@ -39,10 +47,20 @@
         }
     </style>
     <script>
+        function showCopiedMsg() {
+            $.toast({
+                // heading: 'Success',
+                text: 'Code copied.',
+                showHideTransition: 'slide',
+                icon: 'success',
+                loader: false
+            })
+        }
         async function copyCode() {
             let code = $(this).parentsUntil('pre').next();
             let text = code.text();
             await navigator.clipboard.writeText(text);
+            showCopiedMsg();
         }
 
         $(document).ready(function () {
