@@ -110,7 +110,9 @@
         <ol start="2">
             <li>確認是否授權成功：</li>
         </ol>
-        <pre><code class="hljs powershell language-powershell">   <span class="hljs-built_in">Get-AzManagedServicesDefinition</span>
+        <pre>
+<div class="codeBlockEnhancePlaceholder"></div>
+<code class="hljs powershell language-powershell">   <span class="hljs-built_in">Get-AzManagedServicesDefinition</span>
    <span class="hljs-built_in">Get-AzManagedServicesAssignment</span>
 </code></pre>
         <h2 id="使用azure-cli授權">使用 Azure CLI 授權</h2>
@@ -123,7 +125,9 @@
                 <li>由於是以反斜槓換行故不可使用 Powershell 輸入</li>
             </ol>
         </blockquote>
-        <pre><code class="hljs bash language-bash">   az deployment sub create --location WestUS \
+        <pre>
+<div class="codeBlockEnhancePlaceholder"></div>
+<code class="hljs bash language-bash">   az deployment sub create --location WestUS \
                             --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
                             --parameters https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json \
                             --verbose
@@ -131,7 +135,9 @@
         <ol start="2">
             <li>確認是否授權成功：</li>
         </ol>
-        <pre><code class="hljs bash language-bash">   az managedservices definition list
+        <pre>
+<div class="codeBlockEnhancePlaceholder"></div>
+<code class="hljs bash language-bash">   az managedservices definition list
    az managedservices assignment list
 </code></pre>
         <h2 id="透過azure入口網站授權">透過 Azure 入口網站授權</h2>
