@@ -19,6 +19,12 @@
             }
           </style>
           <script>
+            async function copyCode(){
+              let code=$(this).parentsUntil('pre').next();
+              let text = code.text();
+              await navigator.clipboard.writeText(text);
+            }
+            
             $(document).ready(function() {
                 $(".codeBlockEnhancePlaceholder").replaceWith(                  
 `<div style=" width: 100%;height: 2.2rem;display: inline-flex; align-items: center;justify-content: right;position: relative;">
@@ -26,6 +32,7 @@
     <div class="copyBtn" style="
     "><span class="material-symbols-outlined">content_copy</span></div>
 </div>`);
+            $('.copyBtn').click(copyCode);
             })
           </script>
         </head>
