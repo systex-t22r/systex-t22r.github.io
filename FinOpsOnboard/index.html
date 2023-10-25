@@ -102,18 +102,18 @@
         </blockquote>
         <pre>
 <div class="codeBlockEnhancePlaceholder"></div>
-<code class="hljs powershell language-powershell">   <span class="hljs-built_in">New-AzSubscriptionDeployment</span> <span class="hljs-literal">-Location</span> WestUS `
-                    <span class="hljs-literal">-TemplateUri</span> https://systex<span class="hljs-literal">-t22r</span>.github.io/FinOpsOnboard/FinOpsAssessment.json `
-                    <span class="hljs-literal">-TemplateParameterUri</span> https://systex<span class="hljs-literal">-t22r</span>.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json `
-                    <span class="hljs-literal">-Verbose</span>
+<code class="hljs powershell language-powershell"><span class="hljs-built_in">New-AzSubscriptionDeployment</span><span class="hljs-literal"> -Location</span> WestUS `
+                <span class="hljs-literal"> -TemplateUri</span> https://systex<span class="hljs-literal">-t22r</span>.github.io/FinOpsOnboard/FinOpsAssessment.json `
+                <span class="hljs-literal"> -TemplateParameterUri</span> https://systex<span class="hljs-literal">-t22r</span>.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json `
+                <span class="hljs-literal"> -Verbose</span>
 </code></pre>
         <ol start="2">
             <li>確認是否授權成功：</li>
         </ol>
         <pre>
 <div class="codeBlockEnhancePlaceholder"></div>
-<code class="hljs powershell language-powershell">   <span class="hljs-built_in">Get-AzManagedServicesDefinition</span>
-   <span class="hljs-built_in">Get-AzManagedServicesAssignment</span>
+<code class="hljs powershell language-powershell"><span class="hljs-built_in">Get-AzManagedServicesDefinition</span>
+<span class="hljs-built_in">Get-AzManagedServicesAssignment</span>
 </code></pre>
         <h2 id="使用azure-cli授權">使用 Azure CLI 授權</h2>
         <ol>
@@ -127,18 +127,18 @@
         </blockquote>
         <pre>
 <div class="codeBlockEnhancePlaceholder"></div>
-<code class="hljs bash language-bash">   az deployment sub create --location WestUS \
-                            --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
-                            --parameters https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json \
-                            --verbose
+<code class="hljs bash language-bash">az deployment sub create --location WestUS \
+                         --template-uri https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.json \
+                         --parameters https://systex-t22r.github.io/FinOpsOnboard/FinOpsAssessment.parameters.json \
+                         --verbose
 </code></pre>
         <ol start="2">
             <li>確認是否授權成功：</li>
         </ol>
         <pre>
 <div class="codeBlockEnhancePlaceholder"></div>
-<code class="hljs bash language-bash">   az managedservices definition list
-   az managedservices assignment list
+<code class="hljs bash language-bash">az managedservices definition list
+az managedservices assignment list
 </code></pre>
         <h2 id="透過azure入口網站授權">透過 Azure 入口網站授權</h2>
         <ol>
@@ -427,7 +427,7 @@
         pre code.hljs {
             display: block;
             overflow-x: auto;
-            padding: 1em
+            padding: 1em 2.5em
         }
 
         code.hljs {
