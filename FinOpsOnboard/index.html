@@ -83,6 +83,7 @@
             服務帳號存取權限，以便進行後續的帳單與應用程式使用狀況分析。</p>
         <h2 id="授權方式">授權方式</h2>
         <ol>
+            <li>使用 Deploy to Azure 按鈕。</li>
             <li>使用 Powershell 授權。</li>
             <li>使用 Azure CLI 授權。</li>
             <li>透過 Azure 入口網站授權。</li>
@@ -93,6 +94,15 @@
         <p>須以 non-guest account 進行操作，且須具有 Microsoft.Authorization/roleAssignments/write 的權限，詳見 <a
                 href="https://learn.microsoft.com/en-us/azure/lighthouse/how-to/onboard-customer#deploy-the-azure-resource-manager-template"
             >Deploy the Azure Resource Manager template</a>。</p>
+        <h2 id="使用DeploytoAzure按鈕">使用 Deploy to Azure 按鈕</h2>
+        <ol>
+            <li>點選 Deploy to Azure 按鈕<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fsystex-t22r.github.io%2FFinOpsOnboard%2FFinOpsAssessment.json" target="_blank">
+  <img src="https://aka.ms/deploytoazurebutton"/>
+</a></li>
+        </ol>
+        <blockquote>
+            <p>須先使用 Connect-AzAccount 登入 Azure 帳戶才能進行以下流程。</p>
+        </blockquote>
         <h2 id="使用powershell授權">使用 Powershell 授權</h2>
         <ol>
             <li>開啟 Powershell 輸入以下指令：</li>
