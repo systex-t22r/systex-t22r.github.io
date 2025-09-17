@@ -7,7 +7,7 @@
             "metadata": {
                 "description": "Specify a unique name for your offer"
             },
-            "defaultValue": "<to be filled out by MSP> Specify a title for your offer"
+            "defaultValue": "Systex FinOps & SRE Assessment Service"
 
         },
         "mspOfferDescription": {
@@ -15,14 +15,14 @@
             "metadata": {
                 "description": "Name of the Managed Service Provider offering"
             },
-            "defaultValue": "<to be filled out by MSP> Provide a brief description of your offer"
+            "defaultValue": "FinOps & SRE Assessment Service Provided by Systex Information"
         },
         "managedByTenantId": {
             "type": "string",
             "metadata": {
                 "description": "Specify the tenant id of the Managed Service Provider"
             },
-            "defaultValue": "<to be filled out by MSP> Provide your tenant id"
+            "defaultValue": "e72f6de0-ea11-4959-a70e-136aacd3cf4f"
         },
         "authorizations": {
             "type": "array",
@@ -31,15 +31,10 @@
             },
             "defaultValue": [
                 { 
-                    "principalId": "ee8f6d35-15f2-4252-b1b8-591358e8a244", 
+                    "principalId": "862b7b91-7f7c-47f4-a6d9-ee35a23fb347", 
                     "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-                    "principalIdDisplayName": "PIM_Group" 
-                }, 
-                { 
-                    "principalId": "ee8f6d35-15f2-4252-b1b8-591358e8a244", 
-                    "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46",
-                    "principalIdDisplayName": "PIM_Group" 
-                }   
+                    "principalIdDisplayName": "Systex FinOps & SRE Assessment Service Account" 
+                } 
             ]
         }              
     },
