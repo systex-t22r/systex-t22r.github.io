@@ -17,6 +17,14 @@
                     "principalId": "862b7b91-7f7c-47f4-a6d9-ee35a23fb347", 
                     "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
                     "principalIdDisplayName": "Systex FinOps & SRE Assessment Service Account" 
+                },{ 
+                    "principalId": "862b7b91-7f7c-47f4-a6d9-ee35a23fb347", 
+                    "roleDefinitionId": "72fafb9e-0641-4937-9268-a91bfd8191a3",
+                    "principalIdDisplayName": "Systex FinOps & SRE Assessment - Cost Management Reader" 
+                }, { 
+                    "principalId": "862b7b91-7f7c-47f4-a6d9-ee35a23fb347", 
+                    "roleDefinitionId": "43d0d8ad-25c7-4714-9337-8ba259a9fe05",
+                    "principalIdDisplayName": "Systex FinOps & SRE Assessment - Monitoring Reader" 
                 }
                     ]
                 }                
